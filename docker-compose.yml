@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: provenance-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: provenance
+      POSTGRES_PASSWORD: provenance_dev
+      POSTGRES_DB: provenance
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U provenance -d provenance"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: provenance-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: provenance-api
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://provenance:provenance_dev@db:5432/provenance
+      - REDIS_URL=redis://redis:6379/0
+      - ENVIRONMENT=production
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: provenance-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8001
+      - NODE_ENV=production
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+  redis_data:

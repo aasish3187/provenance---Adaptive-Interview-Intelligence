@@ -1,0 +1,61 @@
+# ==========================================
+# Provenance Model Configuration
+# All model IDs centralized here — never hardcode in code
+# ==========================================
+
+version: "1.0"
+
+# Fast Conversation Lane (Voice WebSocket & Real-time Live Interaction)
+conversation:
+  provider: "google"
+  model_id: "gemini-3.8-flash"
+  live_model_id: "gemini-3.8-flash"
+  temperature: 0.6
+  max_tokens: 1024
+
+# Slow Reasoning Lane (Turn Evaluation)
+# Evaluator Agent: Structured rubric assessment & quote extraction
+evaluator:
+  provider: "google"
+  model_id: "gemini-3.8-flash"
+  temperature: 0.1
+  timeout_seconds: 5.0
+
+# Blueprint Builder: JD & resume parsing into competencies
+blueprint:
+  provider: "google"
+  model_id: "gemini-3.8-flash"
+  temperature: 0.2
+
+# Next-Best-Question (NBQ) Planner
+# Generates natural language question phrasing adhering to deterministic utility argmax
+planner:
+  provider: "google"
+  model_id: "gemini-3.8-flash"
+  temperature: 0.4
+
+# Security Guard Agent
+# Fast injection check and input sanitation
+guard:
+  provider: "google"
+  model_id: "gemini-3.8-flash"
+  temperature: 0.0
+
+# Dossier Synthesizer
+# Evidence-linked report generator
+dossier:
+  provider: "google"
+  model_id: "gemini-3.8-flash"
+  temperature: 0.2
+
+# Ultra-Fast Groq Inference Accelerator (500+ tok/s)
+fast_lane:
+  provider: "groq"
+  model_id: "qwen/qwen3.8-27b"
+  fallback_model_id: "openai/gpt-oss-120b"
+  temperature: 0.2
+
+# Embeddings (Skill normalization & taxonomy alignment)
+embeddings:
+  provider: "google"
+  model_id: "text-embedding-004"
