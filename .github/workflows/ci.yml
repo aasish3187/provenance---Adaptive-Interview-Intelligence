@@ -23,9 +23,10 @@ jobs:
           pip install -r apps/api/requirements.txt
 
       - name: Run API Tests & Invariants
+        env:
+          PYTHONPATH: .
         run: |
-          cd apps/api
-          python -m pytest tests/ -v
+          python -m pytest apps/api/tests -v
 
   test-web:
     runs-on: ubuntu-latest

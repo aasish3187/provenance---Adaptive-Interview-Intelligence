@@ -60,4 +60,5 @@ Thumbs.db
 *.zip
 .playwright-mcp/
 scratch/
+.*_breaker
 
