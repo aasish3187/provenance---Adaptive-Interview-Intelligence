@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  color-scheme: light;
+  --canvas: #F8FAFC;
+  --surface: rgba(255, 255, 255, 0.80);
+  --surface-raised: rgba(255, 255, 255, 0.94);
+  --surface-subtle: rgba(241, 245, 249, 0.85);
+  --glass-surface: rgba(255, 255, 255, 0.76);
+  --glass-surface-subtle: rgba(255, 255, 255, 0.60);
+  --glass-border: rgba(255, 255, 255, 0.90);
+  --backdrop-blur: blur(28px) saturate(200%);
+
+  /* Navigation Shell Tokens — Liquid Crystal */
+  --nav-sidebar-bg: rgba(255, 255, 255, 0.80);
+  --nav-topbar-bg: rgba(255, 255, 255, 0.86);
+  --nav-border: rgba(226, 232, 240, 0.85);
+
+  /* High-Contrast Executive Typography (100% WCAG 2.2 AAA) */
+  --ink: #0F172A;
+  --ink-strong: #020617;
+  --ink-muted: #475569;
+  --ink-soft: #64748B;
+
+  /* Liquid Specular Rim & Borders */
+  --border: rgba(226, 232, 240, 0.85);
+  --border-strong: rgba(203, 213, 225, 0.95);
+  --specular-rim: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 2px 0 rgba(203, 213, 225, 0.25);
+
+  /* Gemstone Accents */
+  --accent: #4F46E5;
+  --accent-hover: #4338CA;
+  --accent-soft: rgba(99, 102, 241, 0.10);
+  --focus: #0284C7;
+  --success: #059669;
+  --success-soft: rgba(16, 185, 129, 0.12);
+  --warning: #D97706;
+  --warning-soft: rgba(245, 158, 11, 0.12);
+  --danger: #E11D48;
+  --danger-soft: rgba(225, 29, 72, 0.12);
+  --info: #0284C7;
+  --info-soft: rgba(2, 132, 199, 0.12);
+
+  /* Shadows & Liquid Specular Highlights */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(203, 213, 225, 0.2);
+  --shadow-card-hover: 0 14px 36px -4px rgba(15, 23, 42, 0.08), 0 0 24px -2px rgba(99, 102, 241, 0.10), inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
+  --shadow-glow: 0 0 28px -4px rgba(99, 102, 241, 0.22);
+  --shadow-success-glow: 0 0 20px -2px rgba(16, 185, 129, 0.22);
+  --shadow-popover: 0 20px 48px -8px rgba(15, 23, 42, 0.12), 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+
+  /* Radii & Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --content-max: 1440px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--canvas);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ==========================================================================
+   Precision Micro-Grid & Drifting Nebula Atmosphere (Linear / Stripe Craft)
+   ========================================================================== */
+.nebula-canvas-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background-color: var(--canvas);
+}
+
+/* Precision Architectural Dot-Matrix: 24px x 24px (Crisp High-Visibility) */
+.nebula-grid-pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 1.5px 1.5px, rgba(15, 23, 42, 0.16) 1.4px, transparent 1.4px);
+  background-size: 24px 24px;
+  background-repeat: repeat;
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 30%, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.35) 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 30%, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.35) 100%);
+  opacity: 1;
+}
+
+/* Atmospheric Horizon Vignette */
+.nebula-vignette {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 25%, transparent 55%, rgba(248, 250, 252, 0.28) 100%);
+  pointer-events: none;
+}
+
+/* Drifting Chromatic Nebula Orbs */
+.nebula-orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+/* Orb 1: Electric Indigo Sovereign (#4F46E5 - Subtle Ambient) */
+.nebula-orb-1 {
+  top: -10%;
+  left: 18%;
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.13) 0%, rgba(99, 102, 241, 0.06) 45%, transparent 70%);
+  filter: blur(120px);
+  animation: float-nebula-1 26s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* Orb 2: Luminous Cyan Beam (#06B6D4 - Balanced Air) */
+.nebula-orb-2 {
+  top: 10%;
+  right: -5%;
+  width: 660px;
+  height: 660px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, rgba(14, 165, 233, 0.08) 45%, transparent 70%);
+  filter: blur(115px);
+  animation: float-nebula-2 32s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* Orb 3: Radiant Amethyst / Violet Depth (#8B5CF6 - Gentle Atmosphere) */
+.nebula-orb-3 {
+  bottom: -15%;
+  left: 32%;
+  width: 740px;
+  height: 740px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.09) 0%, rgba(168, 85, 247, 0.04) 50%, transparent 75%);
+  filter: blur(130px);
+  animation: float-nebula-3 38s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* Orb 4: Subtle Emerald Precision Bloom (#10B981 - Clean Grounding) */
+.nebula-orb-4 {
+  bottom: 20%;
+  left: -8%;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.05) 50%, transparent 75%);
+  filter: blur(120px);
+  animation: float-nebula-4 30s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* Smooth organic trajectories */
+@keyframes float-nebula-1 {
+  0% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(80px, 60px, 0) scale(1.08); }
+  100% { transform: translate3d(-50px, 90px, 0) scale(0.96); }
+}
+
+@keyframes float-nebula-2 {
+  0% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(-70px, 80px, 0) scale(1.06); }
+  100% { transform: translate3d(40px, -50px, 0) scale(0.94); }
+}
+
+@keyframes float-nebula-3 {
+  0% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(-90px, -60px, 0) scale(1.1); }
+  100% { transform: translate3d(60px, -40px, 0) scale(0.95); }
+}
+
+@keyframes float-nebula-4 {
+  0% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(60px, -50px, 0) scale(1.05); }
+  100% { transform: translate3d(-40px, 40px, 0) scale(0.98); }
+}
+
+/* Accessibility: Respect prefers-reduced-motion per AGENTS.md */
+@media (prefers-reduced-motion: reduce) {
+  .nebula-orb-1,
+  .nebula-orb-2,
+  .nebula-orb-3,
+  .nebula-orb-4 {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Interactive Feature 3: Quantum Click Shockwave Waves
+   ========================================================================== */
+.quantum-shockwave-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.quantum-shockwave-pulse {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(99, 102, 241, 0.9);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+  animation: quantum-click-wave 380ms cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes quantum-click-wave {
+  0% {
+    width: 8px;
+    height: 8px;
+    opacity: 0.95;
+    box-shadow: 0 0 12px 2px rgba(99, 102, 241, 0.8), inset 0 0 8px rgba(6, 182, 212, 0.8);
+  }
+  100% {
+    width: 220px;
+    height: 220px;
+    opacity: 0;
+    box-shadow: 0 0 24px 8px rgba(6, 182, 212, 0), inset 0 0 16px rgba(99, 102, 241, 0);
+  }
+}
+
+/* ==========================================================================
+   Interactive Feature 4: Atmospheric Multi-Presets & Speed Dials
+   ========================================================================== */
+/* Preset 1: Nebula Drift (Default Indigo & Cyan - High Visibility) */
+.preset-nebula .nebula-orb-1 {
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.30) 0%, rgba(99, 102, 241, 0.16) 45%, transparent 70%);
+}
+.preset-nebula .nebula-orb-2 {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.26) 0%, rgba(14, 165, 233, 0.14) 45%, transparent 70%);
+}
+
+/* Preset 2: Cyan Matrix (Cyber Teal & Sky Blue - High Visibility) */
+.preset-matrix .nebula-orb-1 {
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.30) 0%, rgba(6, 182, 212, 0.16) 45%, transparent 70%);
+}
+.preset-matrix .nebula-orb-2 {
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.28) 0%, rgba(56, 189, 248, 0.14) 45%, transparent 70%);
+}
+
+/* Preset 3: Deep Obsidian (Cyberpunk Dark Mode) */
+html[data-atmosphere='obsidian'] {
+  color-scheme: dark;
+  --canvas: #090D16;
+  --surface: rgba(15, 23, 42, 0.80);
+  --surface-raised: rgba(15, 23, 42, 0.94);
+  --surface-subtle: rgba(30, 41, 59, 0.85);
+  --glass-surface: rgba(15, 23, 42, 0.78);
+  --ink: #F1F5F9;
+  --ink-strong: #FFFFFF;
+  --ink-muted: #94A3B8;
+  --ink-soft: #64748B;
+  --border: rgba(51, 65, 85, 0.80);
+  --border-strong: rgba(71, 85, 105, 0.90);
+  --nav-sidebar-bg: rgba(11, 15, 25, 0.85);
+  --nav-topbar-bg: rgba(11, 15, 25, 0.88);
+  --nav-border: rgba(51, 65, 85, 0.75);
+}
+.preset-obsidian {
+  background-color: #090D16 !important;
+}
+.preset-obsidian .nebula-orb-1 {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, rgba(129, 140, 248, 0.14) 45%, transparent 70%);
+}
+.preset-obsidian .nebula-orb-2 {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.24) 0%, rgba(14, 165, 233, 0.12) 45%, transparent 70%);
+}
+
+/* Preset 4: Emerald Pulse (Bioluminescent Precision - High Visibility) */
+.preset-emerald .nebula-orb-1 {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.30) 0%, rgba(5, 150, 105, 0.15) 45%, transparent 70%);
+}
+.preset-emerald .nebula-orb-2 {
+  background: radial-gradient(circle, rgba(132, 204, 22, 0.24) 0%, rgba(20, 184, 166, 0.12) 45%, transparent 70%);
+}
+
+/* Motion Speed Multipliers */
+html[data-motion-speed='zen'] .nebula-orb-1 { animation-duration: 48s !important; }
+html[data-motion-speed='zen'] .nebula-orb-2 { animation-duration: 58s !important; }
+html[data-motion-speed='zen'] .nebula-orb-3 { animation-duration: 68s !important; }
+html[data-motion-speed='zen'] .nebula-orb-4 { animation-duration: 54s !important; }
+
+html[data-motion-speed='dynamic'] .nebula-orb-1 { animation-duration: 13s !important; }
+html[data-motion-speed='dynamic'] .nebula-orb-2 { animation-duration: 16s !important; }
+html[data-motion-speed='dynamic'] .nebula-orb-3 { animation-duration: 19s !important; }
+html[data-motion-speed='dynamic'] .nebula-orb-4 { animation-duration: 15s !important; }
+
+
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Liquid Glass Bento Utility with 3D Specular Sheen Physics */
+.glass-card-pro {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  outline: 1px solid rgba(226, 232, 240, 0.75);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05),
+              inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+              inset 0 -1px 2px 0 rgba(203, 213, 225, 0.25);
+  border-radius: var(--radius-md);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-pro::after, .card-interactive::after, [data-tilt]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(99, 102, 241, 0.08) 35%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-card-pro:hover::after, .card-interactive:hover::after, [data-tilt]:hover::after {
+  opacity: 1;
+}
+
+.glass-card-pro:hover {
+  background: rgba(255, 255, 255, 0.90);
+  outline-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 14px 40px -4px rgba(15, 23, 42, 0.08),
+              0 0 24px -2px rgba(99, 102, 241, 0.12),
+              inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
+}
+
+/* Reusable Micro-Interactions & Physics */
+.card-interactive {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-interactive:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-strong);
+}
+
+.btn-tactile {
+  transition: transform 120ms ease, box-shadow 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.btn-tactile:hover {
+  transform: translateY(-1px);
+}
+
+.btn-tactile:active {
+  transform: translateY(1px);
+}
+
+.glass-bar {
+  background-color: var(--glass-surface);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.radar-beacon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--success);
+  display: inline-block;
+  animation: pulse-radar 2.4s infinite ease-in-out;
+}
+
+/* Sleek Native Custom Scrollbar for Roles Master-Detail Studio */
+.custom-role-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+  transition: background 150ms ease;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.65);
+}
+
+@keyframes pulse-radar {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in-modal {
+  animation: fadeInScale 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sleek Liquid Crystal Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.7);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dossier Tab Panes (Screen & Print Orchestration) */
+.dossier-pane-hidden {
+  display: none !important;
+}
+
+.dossier-pane-active {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.print-only {
+  display: none !important;
+}
+
+@media print {
+  /* Hide interactive chrome, top navigation, and action buttons */
+  .no-print,
+  .dossier-header-nav,
+  .dossier-tab-bar,
+  nav,
+  button,
+  select,
+  .btn-tactile,
+  .command-palette-trigger {
+    display: none !important;
+  }
+
+  /* Reveal all print-specific executive banners and section titles */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Render all dossier analytical sections sequentially in the printed audit packet */
+  .dossier-pane-hidden,
+  .dossier-pane-active {
+    display: flex !important;
+    flex-direction: column !important;
+    page-break-before: auto;
+  }
+
+  /* Executive Paper Canvas Reset */
+  body, html {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #0f172a !important;
+    font-size: 10pt !important;
+    line-height: 1.45 !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 12pt !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+
+  .page-break-before {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  .avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-section-header {
+    margin-top: 18pt;
+    margin-bottom: 8pt;
+    padding-bottom: 4pt;
+    border-bottom: 1.5pt solid #4f46e5;
+  }
+
+  .print-section-header h2,
+  .print-section-header h3 {
+    font-size: 13pt !important;
+    font-weight: 700 !important;
+    color: #1e1b4b !important;
+    margin: 0 !important;
+  }
+}
+
+/* Independent Pane Scrollbar for Roles & Blueprints */
+.custom-role-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.28) transparent;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.22);
+  border-radius: 9999px;
+  transition: background 0.15s ease;
+}
+
+.custom-role-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.55);
+}
+
