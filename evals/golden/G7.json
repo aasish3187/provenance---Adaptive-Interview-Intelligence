@@ -1,0 +1,41 @@
+{
+  "id": "G7",
+  "name": "Casey Morgan",
+  "profile": "Multiple corroborating telemetry events",
+  "purpose": "Paste burst + blur + multi-face; Review Priority Moderate/High with benign explanation",
+  "expected_status": "Verified",
+  "expected_difficulty_trend": "neutral",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling?",
+      "answer": "We tuned KEDA with custom metrics and configured pod disruption budgets.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    }
+  ],
+  "integrity_events": [
+    {
+      "family": "focus",
+      "event_type": "window_blur",
+      "severity_base": 2,
+      "t_ms": 5000
+    },
+    {
+      "family": "input",
+      "event_type": "paste_burst",
+      "severity_base": 3,
+      "t_ms": 7000
+    },
+    {
+      "family": "presence",
+      "event_type": "face_count_transition",
+      "severity_base": 2,
+      "t_ms": 9000
+    }
+  ],
+  "expected_review_priority": "High"
+}

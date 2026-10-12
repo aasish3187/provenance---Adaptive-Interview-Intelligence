@@ -1,0 +1,22 @@
+{
+  "id": "G11",
+  "name": "Offtopic Olivia",
+  "profile": "Talks about completely unrelated topic",
+  "purpose": "Evidence criteria missed; not rewarded",
+  "expected_status": "Claimed \u2014 needs validation",
+  "expected_difficulty_trend": "flat",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling?",
+      "answer": "I enjoy playing tennis on the weekends and watching documentary films about space exploration.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    }
+  ],
+  "integrity_events": [],
+  "expected_review_priority": "None"
+}

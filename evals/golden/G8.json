@@ -1,0 +1,22 @@
+{
+  "id": "G8",
+  "name": "Kenji Sato",
+  "profile": "Non-native phrasing, technically immaculate content",
+  "purpose": "Scored on technical merit, identical to native phrasing",
+  "expected_status": "Verified",
+  "expected_difficulty_trend": "increasing",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling?",
+      "answer": "In our cluster, we connect KEDA to Prometheus metrics for queue length. Also pod disruption budgets minAvailable is very important.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    }
+  ],
+  "integrity_events": [],
+  "expected_review_priority": "None"
+}

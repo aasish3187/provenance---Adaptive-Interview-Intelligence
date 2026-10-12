@@ -1,0 +1,32 @@
+{
+  "id": "G1",
+  "name": "Sarah Chen",
+  "profile": "Senior Distributed Systems & Kubernetes Engineer",
+  "purpose": "Deep specific answers; difficulty should rise; skills verified",
+  "expected_status": "Verified",
+  "expected_difficulty_trend": "increasing",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling for asynchronous queue depth spikes?",
+      "answer": "We configured KEDA with custom Prometheus metrics querying Kafka lag. We set pod disruption budgets with minAvailable 80% to prevent eviction cascades during node scale-up.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    },
+    {
+      "turn_index": 2,
+      "competency_id": "COMP-GO",
+      "question": "Explain your memory management strategy in high-throughput Go services.",
+      "answer": "We utilized sync.Pool for zero-allocation byte buffers in serialization and implemented context timeouts with non-blocking channel selects to eliminate goroutine leaks.",
+      "criteria": [
+        "Uses sync.Pool to minimize GC allocator overhead",
+        "Implements non-blocking select with timeout or context cancellation"
+      ]
+    }
+  ],
+  "integrity_events": [],
+  "expected_review_priority": "None"
+}

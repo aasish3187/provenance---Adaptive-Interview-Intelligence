@@ -1,0 +1,31 @@
+{
+  "id": "G2",
+  "name": "Alex Miller",
+  "profile": "Vague answers, incorrect concepts",
+  "purpose": "Difficulty falls; Tested \u2014 not demonstrated",
+  "expected_status": "Tested \u2014 not demonstrated",
+  "expected_difficulty_trend": "decreasing",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling for queue depth spikes?",
+      "answer": "I just increased the CPU limit in the yaml file and restarted the docker container on the host machine.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    },
+    {
+      "turn_index": 2,
+      "competency_id": "COMP-K8S",
+      "question": "What happens when node CPU is exhausted?",
+      "answer": "I don't know, normally someone else on the ops team handles restarting things.",
+      "criteria": [
+        "Understands pod eviction and QoS classes"
+      ]
+    }
+  ],
+  "integrity_events": [],
+  "expected_review_priority": "None"
+}

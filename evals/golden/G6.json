@@ -1,0 +1,29 @@
+{
+  "id": "G6",
+  "name": "Jordan Lee",
+  "profile": "One tab switch to check documentation",
+  "purpose": "Benign integrity telemetry; Review priority <= Low with explanation",
+  "expected_status": "Verified",
+  "expected_difficulty_trend": "increasing",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling?",
+      "answer": "We used KEDA with Prometheus custom metrics. Let me remember the exact annotation, we set pod disruption budgets to preserve 80% replicas.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    }
+  ],
+  "integrity_events": [
+    {
+      "family": "focus",
+      "event_type": "tab_hidden",
+      "severity_base": 1,
+      "t_ms": 10000
+    }
+  ],
+  "expected_review_priority": "Low"
+}

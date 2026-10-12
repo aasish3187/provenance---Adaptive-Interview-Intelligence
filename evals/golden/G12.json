@@ -1,0 +1,22 @@
+{
+  "id": "G12",
+  "name": "Network Drop Candidate",
+  "profile": "Voice lane connection drops",
+  "purpose": "Voice-to-text fallback operates smoothly without conversation loss",
+  "expected_status": "Verified",
+  "expected_difficulty_trend": "increasing",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling?",
+      "answer": "We configured KEDA with Prometheus custom metrics and set pod disruption budgets to 80%.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    }
+  ],
+  "integrity_events": [],
+  "expected_review_priority": "None"
+}

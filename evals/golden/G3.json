@@ -1,0 +1,22 @@
+{
+  "id": "G3",
+  "name": "David Bluffer",
+  "profile": "Strong resume claim, shallow actual answers",
+  "purpose": "Must produce Claimed \u2014 needs validation with drill-down questions",
+  "expected_status": "Claimed \u2014 needs validation",
+  "expected_difficulty_trend": "flat",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-SEC",
+      "question": "How did you secure inter-service communication across clusters?",
+      "answer": "We used normal security practices with basic tokens and standard firewalls.",
+      "criteria": [
+        "Understands workload identity (SPIFFE/SPIRE)",
+        "Applies mutual TLS (mTLS) for pod authentication"
+      ]
+    }
+  ],
+  "integrity_events": [],
+  "expected_review_priority": "None"
+}

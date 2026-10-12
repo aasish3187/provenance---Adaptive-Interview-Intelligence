@@ -1,0 +1,22 @@
+{
+  "id": "G10",
+  "name": "Silent Sam",
+  "profile": "Extremely brief one-line answer",
+  "purpose": "Low confidence, does not invent artificial high scores",
+  "expected_status": "Claimed \u2014 needs validation",
+  "expected_difficulty_trend": "flat",
+  "turns": [
+    {
+      "turn_index": 1,
+      "competency_id": "COMP-K8S",
+      "question": "How do you configure pod autoscaling?",
+      "answer": "Yes, we use kubernetes autoscaling.",
+      "criteria": [
+        "Identifies custom metrics exporter (KEDA / Prometheus)",
+        "Considers pod disruption budgets"
+      ]
+    }
+  ],
+  "integrity_events": [],
+  "expected_review_priority": "None"
+}
