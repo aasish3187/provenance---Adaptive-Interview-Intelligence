@@ -1,11 +1,14 @@
 # PROVENANCE — Evidence-Driven Adaptive Interview Intelligence
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-provenance--intel.vercel.app-000000?style=for-the-badge&logo=vercel)](https://provenance-adaptive-interview-intel.vercel.app/)
+[![API Docs](https://img.shields.io/badge/⚡%20Backend%20API-Swagger%20Docs-009688?style=for-the-badge&logo=fastapi)](https://provenance-api-zgv7.onrender.com/docs)
+
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js%2014%20App%20Router-black?logo=next.js)](https://nextjs.org/)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI%20%2B%20Python%203.10%2B-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Tests Passing](https://img.shields.io/badge/pytest-38%20passed%20(100%25)-brightgreen)](evals/)
 [![Golden Set](https://img.shields.io/badge/Golden%20Set-G1--G12%20Verified-blue)](evals/golden/)
 [![Google AI](https://img.shields.io/badge/AI%20Engine-Gemini%202.5%20Flash%20%2F%20Pro-4285F4?logo=google)](https://ai.google.dev/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 > **"Every score has a source. Every question has a reason. Every flag has a human."**
 
